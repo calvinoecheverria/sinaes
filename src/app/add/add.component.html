@@ -1,0 +1,121 @@
+
+
+
+<div class="container" *ngIf="posteo">
+    <h2>{{title}}</h2>
+    <div class="message success"  *ngIf="status == 'success'">
+    El posteo se ha creado correctamente, puedes <a [routerLink]="['/posteo', save_posteo._id]">verlo aquí</a>
+	</div>
+<div class="message failed" *ngIf="status == 'failed'">
+	
+		El posteo NO SE HA PODIDO CREAR
+	</div>
+    
+<form #posteoForm="ngForm" (ngSubmit)="onSubmit(posteoForm)">
+    <p>
+    <label for="author_name">Nombre Autorx</label>
+        <input type="text" name="author_name" #author_name="ngModel" [(ngModel)]="posteo.author_name" required /><br>
+        <span *ngIf='author_name.touched && !author_name.valid'>
+        completar este campo por favor
+        </span>
+    </p>
+    
+    <p>
+    <label for="author_surname">Apellido Autorx</label>
+        <input type="text" name="author_surname" #author_surname="ngModel" [(ngModel)]="posteo.author_surname" required /><br>
+    <span *ngIf='author_surname.touched && !author_surname.valid'>
+        completar este campo por favor
+        </span>
+    </p>
+    
+    <p>
+    <label for="author_img">Imagen Autorx</label>
+        <span class="image" *ngIf="posteo.author_img" style="float:none;">
+				<img src="{{url+'get-image/'+posteo.author_img}}" style:"width:100px;"/>
+			</span><br/>
+        <input type="file" name="author_img" placeholder="Subir imagen para la Bio" (change)="fileChangeEvent($event)"/>
+        
+    
+    </p>
+    <p>
+    <label for="author_bio">Bio Autorx</label>
+        <textarea name="author_bio" #author_bio="ngModel" [(ngModel)]="posteo.author_bio" required ></textarea><br>
+        <span *ngIf='author_bio.touched && !author_bio.valid'>
+        completar este campo por favor
+        </span>
+    
+    </p>
+    <p>
+    <label for="author_birth">Nacimiento Autorx</label>
+        <input type="number" name="author_birth" #author_birth="ngModel" [(ngModel)]="posteo.author_birth" required /><br>
+        <span *ngIf='author_birth.touched && !author_birth.valid'>
+        completar este campo por favor
+        </span>
+    
+    </p>
+    <p>
+    <label for="author_death">Muerte Autorx</label>
+        <input type="number" name="author_death" #author_death="ngModel" [(ngModel)]="posteo.author_death" required /><br>
+        <span *ngIf='author_death.touched && !author_death.valid'>
+        completar este campo por favor
+        </span>
+    
+    </p>
+   <p>
+    <label for="title">Titulo</label>
+        <input type="text" name="title" #title="ngModel" [(ngModel)]="posteo.title" required /><br>
+        <span *ngIf='title.touched && !title.valid'>
+        completar este campo por favor
+        </span>
+    
+    </p>
+    
+    <p>
+    <label for="note">Nota</label>
+        <textarea name="note" #note="ngModel" [(ngModel)]="posteo.note" required></textarea><br>
+        <span *ngIf='note.touched && !note.valid'>
+        completar este campo por favor
+        </span>
+    
+    </p>
+    
+    <p>
+    <label for="note_year">Año Nota</label>
+        <input type="number" name="note_year" #note_year="ngModel" [(ngModel)]="posteo.note_year" required /><br>
+        <span *ngIf='note_year.touched && !note_year.valid'>
+        completar este campo por favor
+        </span>
+    
+    </p>
+    <p>
+    <label for="note_img">Imagen Nota</label>
+        <span class="image" *ngIf="posteo.note_img" style="float:none;">
+				<img src="{{url+'get-image/'+posteo.note_img}}" style="width:100px;"/>
+			</span><br/>
+        <input type="file" name="note_img" placeholder="Subir imagen para la nota" (change)="fileChangeEvent($event)"/><br>
+        
+    
+    </p>
+    
+    <p>
+    <label for="description">Descripcion</label>
+        <input type="text" name="description" #description="ngModel" [(ngModel)]="posteo.description" required /><br>
+        <span *ngIf='description.touched && !description.valid'>
+        completar este campo por favor
+        </span>
+    
+    </p>
+    <p>
+    <label for="link">Link</label>
+        <input type="text" name="link" #link="ngModel" [(ngModel)]="posteo.link" required /><br>
+        <span *ngIf='link.touched && !link.valid'>
+        completar este campo por favor
+        </span>
+    
+    </p>
+   
+    <input type="submit" value="add" [disabled]="!posteoForm.form.valid"/>
+    </form>
+
+
+</div>

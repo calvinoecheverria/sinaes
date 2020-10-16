@@ -1,0 +1,33 @@
+<div class="container">
+	<h2>Artistas</h2>
+
+	<ul>
+        <li *ngFor="let posteo of posteos" class="posteo">
+            
+            {{posteo.author_surname}}, {{posteo.author_name}}
+        <!--
+            {{posteo.author_surname}}
+            {{posteo.author_name}}
+            {{posteo._id}}
+            {{posteo.author_img}}
+            {{posteo.author_birth}}
+            {{posteo.author_death}}
+            {{posteo.title}}
+            {{posteo.note}}
+            {{posteo.note_year}}
+            {{posteo.note_img}}
+            {{posteo.description}}
+            {{posteo.link}}
+-->
+<!--		<li *ngFor="let posteo of posteos" class="posteo">
+			<a [routerLink]="['/posteo', posteo._id]">
+				<div class="image">
+					<img src="{{url+'get-image/'+posteo.note_img}}" *ngIf="project.note_img"/>
+				</div>
+				<h3>{{posteo.description}}</h3>
+				<p>{{posteo.note}}</p>
+			</a>
+-->
+		</li>
+	</ul>
+</div>
